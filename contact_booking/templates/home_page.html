@@ -1,0 +1,375 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block style %}
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+<!-- IonIcons -->
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+<!-- DataTables -->
+<link rel="stylesheet" href="{% static 'plugins/datatables-bs4/css/dataTables.bootstrap4.min.css' %}">
+<link rel="stylesheet" href="{% static 'plugins/datatables-responsive/css/responsive.bootstrap4.min.css' %}">
+<link rel="stylesheet" href="{% static 'plugins/datatables-buttons/css/buttons.bootstrap4.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'css/form-wizard.css' %}">
+<style>
+    
+    * {
+        box-sizing: border-box;
+    }
+
+    .form-wizard-wrapper {
+        font-family: 'Lato', sans-serif;
+        font-size: 16px;
+    }
+
+    .clearfix:after {
+        display: block;
+
+    }
+
+    .form-column {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .full-wdth {
+        width: 100%;
+    }
+
+    .form-column,
+    .full-wdth {
+        position: relative;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-bottom: 10px;
+    }
+
+    .float-right {
+        float: right;
+    }
+
+    .float-left {
+        float: left;
+    }
+
+    label {
+        display: inline-block;
+        margin-bottom: .5rem;
+    }
+
+    .form-row {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+
+    .form-wizard-wrapper {
+        /*max-width: 767px;*/
+        margin: 0 1%;
+        overflow: hidden;
+        position: relative;
+        padding-top: 15px;
+        z-index: 1;
+    }
+
+    .form-wizard-wrapper .form-wizardmove-button {
+        position: absolute;
+        width: 153.4px;
+        left: 0;
+        top: -4px;
+        bottom: -4px;
+        border-radius: 4px;
+        background-color: #6f6fa7;
+        -webkit-transition: all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1) 0s;
+        -moz-transition: all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1) 0s;
+        -ms-transition: all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1) 0s;
+        -o-transition: all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1) 0s;
+        transition: all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1) 0s;
+
+    }
+
+    .form-wizard-wrapper ul {
+        background-color: #3bb6b6;
+        z-index: 1;
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        margin: 0;
+        padding: 0;
+    }
+
+    .form-wizard-wrapper ul li {
+        list-style-type: none;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    .form-wizard-wrapper ul li a {
+        display: block;
+        padding: 10px;
+        width: 100%;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    .form-wizard-wrapper ul li a:focus {
+        outline: 0;
+    }
+
+    .form-wizard-wrapper ul li a span {
+        position: relative;
+        z-index: 1;
+    }
+
+    .form-wizard-wrapper ul li.active a {
+        background-color: #ffffff;
+    }
+
+    .form-wizard-wrapper .form-wizard-content {
+        background-color: #ffffff;
+        padding: 20px;
+        color: #777777;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        transition: all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1) 0s;
+        transform: translate3d(100%, 0px, 0px);
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+    }
+
+    .form-wizard-wrapper .form-wizard-content.show {
+        transform: translate3d(0px, 0px, 0px);
+    }
+
+    .form-wizard-wrapper .form-wizard-content h6 {
+        font-size: 18px;
+        font-weight: bold;
+        margin: 0 0 10px;
+    }
+
+    .form-wizard-wrapper .form-wizard-content .form-wizard-next-btn,
+    .form-wizard-wrapper .form-wizard-content .form-wizard-previous-btn {
+        background-color: #3bb6b6;
+        color: #ffffff;
+        display: inline-block;
+        padding: 6px 26px;
+        border-radius: 4px;
+        margin-top: 20px;
+        text-decoration: none;
+    }
+
+    .form-wizard-wrapper .form-wizard-content .form-wizard-previous-btn {
+        background-color: #f1f1f1;
+        color: #000000;
+    }
+
+    .form-wizard-content-wrapper {
+        height: 500px;
+        position: relative;
+        background-color: #fff;
+    }
+
+    .text-field {
+        display: block;
+        width: 100%;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+    .form-wizard-link{
+        pointer-events: none;
+    }
+</style>
+<style>
+
+    .content-area-edit_save {
+        background: #fff;
+        border: 1px solid #E2E2E2;
+        padding: 50px;
+        width: 600px;
+        margin: 50px auto;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+
+    .row_edit_save {
+        border-bottom: 1px solid #d8d8d8;
+        padding: 10px 0;
+        width: 100%;
+    }
+
+    .field {
+        display: inline-block;
+        position: relative;
+        border-right: 1px solid #d8d8d8;
+        margin-left: 20px;
+        padding-right: 20px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .field:last-of-type {
+        border-right: none;
+        padding-right: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 12px;
+        text-transform: uppercase;
+        color: #9AA9AA;
+        margin-top: 10px;
+    }
+
+    .edit-save {
+        background: transparent;
+        font-size: 16px;
+        color: #444;
+        border: none;
+        border-bottom: 1px solid #d8d8d8;
+        margin: 0 0 0 -2px;
+        height: 40px;
+        line-height: 40px;
+        width: 100%;
+        transition: all 0.3s ease-in-out;
+        outline: none;
+    }
+
+    .edit-save[type="email"] {
+        cursor: pointer;
+        text-decoration: underline;
+        color: #336699;
+    }
+
+    .button_edit_save {
+        margin-bottom: 20px;
+    }
+
+    .button_edit_save a {
+        display: inline-block;
+        font-size: 14px;
+        text-decoration: none;
+        border-radius: 4px;
+        padding: 0 15px;
+        height: 40px;
+        line-height: 40px;
+        box-sizing: border-box;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .button_edit_save a.edit_edit_save {
+        background-color: #FAFCFE;
+        color: #3E4550;
+        text-shadow: 1px 1px 0 #fff;
+        border: 1px solid #DAE0E1;
+    }
+
+    .button_edit_save a.edit_edit_save:hover {
+        background-color: #F2F5F7;
+        border: 1px solid #D5DCDD;
+    }
+
+    .button_edit_save a.edit_edit_save:active {
+        background-color: #E6ECF1;
+        border: 1px solid #D5DADB;
+    }
+
+    .button_edit_save a.save_edit_save {
+        display: none;
+        background-color: #18A6F5;
+        color: #fff;
+        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.25);
+        border: 1px solid #0F7AAC;
+    }
+
+    .button_edit_save a.save_edit_save:hover {
+        background-color: #1A92D7;
+        border: 1px solid #0E76A7;
+    }
+
+    .button_edit_save a.save_edit_save:active {
+        background-color: #0D6288;
+        border: 1px solid #11658D;
+    }
+
+    html.active .row_edit_save {
+        border-bottom: 1px solid #fff;
+    }
+
+    html.active .row_edit_save .field {
+        margin-left: 13px;
+        padding-right: 13px;
+        border-right: 1px solid #fff;
+    }
+
+    html.active .button_edit_save a.edit_edit_save {
+        display: none;
+    }
+
+    html.active .button_edit_save a.save_edit_save {
+        display: inline-block;
+    }
+</style>
+{% endblock style %}
+
+{% block content %}
+    <div class="wrapper">
+        <!-- Top Nav -->
+        {% include 'top_navbar.html' %}
+        <!-- /Top nav -->
+
+        <!-- Side Nav -->
+        {% include 'side_navbar.html' %}
+        <!-- /Side Nav -->
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+
+            {% include 'delete_modal.html' %}
+
+            {% include 'view_modal.html' %}
+
+            {% block main_content %}
+            
+            {% endblock main_content %}
+        </div>
+        <!-- /.content-wrapper -->
+        <!-- Main Footer -->
+        <footer class="main-footer">
+            <strong>Copyright &copy; 2023-2024 <a href="https://adminlte.io">KGISL</a>.</strong>
+            All rights reserved.
+            <div class="float-right d-none d-sm-inline-block">
+                <b>Version</b> 3.2.0<br> 
+                <b style="color: #1abc9c;">Powered By KGISL</b>
+            </div>
+        </footer>
+    </div>
+    <!-- ./wrapper -->
+
+
+{% endblock content %}

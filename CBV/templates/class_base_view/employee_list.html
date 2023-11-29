@@ -1,0 +1,48 @@
+{% extends 'class_base_view/employee_form.html' %}  
+  
+<!-- 
+<ul class="nav flex-column">   -->
+    <!-- Iterate over object_list -->  
+    <!-- {% for object in object_list %}   -->
+    <!-- Display Objects -->  
+    <!-- <li class="nav-item">First Name: {{ object.first_name }}</li>  
+    <li class="nav-item">Last Name: {{ object.last_name }}</li>   -->
+    <!-- <li class="nav-item">Mobile: {{ object.mobile }}</li>   -->
+    <!-- <li class="nav-item"> Email: {{ object.email }}</li>   -->
+    <!-- <a href="{% url 'EmployeeDetail' object.id %}">detail</a> -->
+    <!-- <hr/>   -->
+    <!-- If object_list is empty -->  
+    <!-- {% empty %}   -->
+    <!-- <li class="nav-item">No objects Find</li>   -->
+    <!-- {% endfor %}  
+ </ul>   -->
+
+{% block content %}
+
+<div class="align-center col-10 offset-1">
+    <div class="d-flex justify-content-between align-items-center">
+        <p class="lead ml-0">My contacts</p>
+        <form hx-post="{% url 'EmployeeCreate' %}" hx-target='#contact-list' class="d-flex align-items-center" method="POST">
+            {% csrf_token %}
+            <input type="text" name="contactname" class="form-control-sm mr-2" placeholder="Enter name" 
+            hx-post="/check-name/" 
+            hx-trigger="keyup" 
+            hx-target="#name-exist"/>
+
+            <input type="text" name="phone_number" class="form-control-sm mr-2" placeholder="Enter phone number" />
+            
+            <button hx-post='{% url "EmployeeCreate"%}' hx-target='#contact-list' type="submit" class="btn btn-success btn-sm">Save</button>
+        </form>
+    </div>
+    <hr/>
+    
+    <div id="contact-list">
+        {% include 'class_base_view/contact-list.html' %}
+    </div>
+    <div style="color:brown">
+        <ul>
+            <li id="list"></li>
+        </ul>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,544 @@
+{% extends 'home_page.html' %}
+{% load static %}
+
+{% block title %}Create User{% endblock title %}
+
+{% block main_content %}
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <h4 class="m-0">Create User Details</h4>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item">
+                        <a class="btn btn-app bg-success" href="{% url 'info_data:home_page' %}"
+                            style="border-radius: 15px;border:'';height: 55px;margin:'';min-width: 70px;">
+                            <span class="badge bg-purple">891</span>
+                            <i class="fas fa-list"></i>View List
+                        </a>
+                    </li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">Form Wizard</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        
+
+                            <!-- Progress Form -->
+                            <form id="progress-form_form_wiz" class="p-4_form_wiz
+                            progress-form_form_wiz body_form_wizard" method="post" action="{% url 'info_data:employee_create' %}">
+                                {% csrf_token %}
+                              <!-- Step Navigation -->
+                              <div class="d-flex_form_wiz align-items-start_form_wiz mb-3_form_wiz sm_form_wiz:mb-5_form_wiz progress-form_form_wiz__tabs" role="tablist">
+                                <button id="progress-form_form_wiz__tab-1" class="flex-1_form_wiz px-0_form_wiz pt-2_form_wiz progress-form_form_wiz__tabs-item butn_form_wiz" type="button" role="tab" aria-controls="progress-form_form_wiz__panel-1" aria-selected="true">
+                                  <span class="d-block_form_wiz step" aria-hidden="true">Step 1 <span class="sm_form_wiz:d-none_form_wiz">of 3</span></span>
+                                  Personal Details
+                                </button>
+                                <button id="progress-form_form_wiz__tab-2" class="flex-1_form_wiz px-0_form_wiz pt-2_form_wiz progress-form_form_wiz__tabs-item butn_form_wiz" type="button" role="tab" aria-controls="progress-form_form_wiz__panel-2" aria-selected="false" tabindex="-1" aria-disabled="true">
+                                  <span class="d-block_form_wiz step" aria-hidden="true">Step 2 <span class="sm_form_wiz:d-none_form_wiz">of 3</span></span>
+                                  Postal Address
+                                </button>
+                                <button id="progress-form_form_wiz__tab-3" class="flex-1_form_wiz px-0_form_wiz pt-2_form_wiz progress-form_form_wiz__tabs-item butn_form_wiz" type="button" role="tab" aria-controls="progress-form_form_wiz__panel-3" aria-selected="false" tabindex="-1" aria-disabled="true">
+                                  <span class="d-block_form_wiz step" aria-hidden="true">Step 3 <span class="sm_form_wiz:d-none_form_wiz">of 3</span></span>
+                                  Family Details
+                                </button>
+                                <button id="progress-form_form_wiz__tab-4" class="flex-1_form_wiz px-0_form_wiz pt-2_form_wiz progress-form_form_wiz__tabs-item butn_form_wiz" type="button" role="tab" aria-controls="progress-form_form_wiz__panel-4" aria-selected="false" tabindex="-1" aria-disabled="true">
+                                  <span class="d-block_form_wiz step" aria-hidden="true">Step 4 <span class="sm_form_wiz:d-none_form_wiz">of 4</span></span>
+                                  Additional Information
+                                </button>
+                                <button id="progress-form_form_wiz__tab-5" class="flex-1_form_wiz px-0_form_wiz pt-2_form_wiz progress-form_form_wiz__tabs-item butn_form_wiz" type="button" role="tab" aria-controls="progress-form_form_wiz__panel-5" aria-selected="false" tabindex="-1" aria-disabled="true">
+                                  <span class="d-block_form_wiz step" aria-hidden="true">Step 5 <span class="sm_form_wiz:d-none_form_wiz">of 5</span></span>
+                                  Carrier Details
+                                </button>
+                              </div>
+                              <hr style=" border: none;
+                              height: 1px;
+                              background-color: #102A42;
+                              border-top: 1px solid #ccc;">
+                              <!-- / End Step Navigation -->
+                          
+                              <!-- Step 1 -->
+                              <section id="progress-form_form_wiz__panel-1" role="tabpanel" aria-labelledby="progress-form_form_wiz__tab-1" tabindex="0">
+                                <div class="sm_form_wiz:d-grid_form_wiz sm_form_wiz:grid-col-2_form_wiz sm_form_wiz:mt-3_form_wiz">
+                        
+                                  <div class="mt-3_form_wiz sm_form_wiz:mt-0_form_wiz form__field">
+                                    <label for="first-name" class="label_form_wiz">
+                                      First name
+                                      <span data-required="true" aria-hidden="true"></span>
+                                    </label>
+                                    <input id="first-name" type="text" name="first-name" autocomplete="given-name" class="form_wiz_input">
+                                  </div>
+                          
+                                  <div class="mt-3_form_wiz sm_form_wiz:mt-0_form_wiz form__field">
+                                    <label for="last-name" class="label_form_wiz">
+                                      Last name
+                                      <span data-required="true" aria-hidden="true"></span>
+                                    </label>
+                                    <input id="last-name" type="text" name="last-name" autocomplete="family-name" class="form_wiz_input">
+                                  </div>
+                        
+                                  <div class="mt-3_form_wiz sm_form_wiz:mt-0_form_wiz form__field">
+                                    <label for="email-address" class="label_form_wiz">
+                                      Email address
+                                      <span data-required="true" aria-hidden="true"></span>
+                                    </label>
+                                    <input id="email-address" type="email" name="email-address" autocomplete="email" inputmode="email" class="form_wiz_input">
+                                  </div>
+                        
+                                  <div class="mt-3_form_wiz sm_form_wiz:mt-0_form_wiz form__field">
+                                    <label for="phone-number" class="label_form_wiz">
+                                      Mobile number
+                                      <span data-required="true" aria-hidden="true"></span>
+                                    </label>
+                                    <input id="phone-number" type="tel" name="phone-number" autocomplete="tel" inputmode="tel" class="form_wiz_input">
+                                  </div>
+                        
+                                  <div class="mt-3_form_wiz sm_form_wiz:mt-0_form_wiz form__field">
+                                    <label for="dob" class="label_form_wiz">
+                                      D.O.B
+                                      <span data-required="true" aria-hidden="true"></span>
+                                    </label>
+                                    <input id="dob" type="date" name="dob" class="form_wiz_input">
+                                  </div>
+                        
+                                  <div class="mt-3_form_wiz sm_form_wiz:mt-0_form_wiz form__field">
+                                    <label for="blood_group" class="label_form_wiz">
+                                      Blood Group
+                                      <span data-required="true" aria-hidden="true"></span>
+                                    </label>
+                                    <select id="blood_group" name="blood_group" class="select_form_wiz">
+                                      <option value="" disabled selected>Please select</option>
+                                      <option value="A_pos">A<sup>+</sup></option>
+                                      <option value="A_neg">A<sup>-</sup></option>
+                                      <option value="B_pos">B<sup>+</sup></option>
+                                      <option value="B_neg">B<sup>-</sup></option>
+                                      <option value="O_pos">O<sup>+</sup></option>
+                                      <option value="O_neg">O<sup>-</sup></option>
+                                      <option value="AB_pos">AB<sup>+</sup></option>
+                                      <option value="AB_neg">AB<sup>-</sup></option>
+                                    </select>
+                                  </div>
+                        
+                                  <div class="mt-3_form_wiz sm_form_wiz:mt-0_form_wiz form__field">
+                                    <label for="gender" class="label_form_wiz">
+                                      Gender
+                                      <span data-required="true" aria-hidden="true"></span>
+                                    </label>
+                                    <div class="btn-group btn-toggle"> 
+                                      <label class="btn btn-default label_form_wiz">
+                                        <input type="radio" class="gender" name="gender" value="Male" class="form_wiz_input"> Male
+                                      </label>
+                                      <label class="btn btn-default label_form_wiz">
+                                        <input type="radio" class="gender" name="gender" value="Female" class="form_wiz_input"> Female
+                                      </label>
+                                      <label class="btn btn-default label_form_wiz">
+                                        <input type="radio" class="gender" name="gender" value="Other" class="form_wiz_input"> Other
+                                      </label>
+                                    </div>
+                                  </div>
+                        
+                                  <div class="mt-3_form_wiz sm_form_wiz:mt-0_form_wiz form__field">
+                                    <label for="whatapp_no" class="label_form_wiz">
+                                      Is same as whatsapp number ?
+                                    </label>
+                                    <div class="btn-group btn-toggle"> 
+                                      <label class="btn btn-default label_form_wiz">
+                                        <input type="radio" class="whatapp_no" name="whatapp_no" value="no" class="form_wiz_input"> No
+                                      </label>
+                                      <label class="btn btn-default label_form_wiz">
+                                        <input type="radio" class="whatapp_no" name="whatapp_no" value="yes" class="form_wiz_input"> Yes
+                                      </label>
+                                    </div>
+                                  </div>
+                        
+                                  <div class="mt-3_form_wiz sm_form_wiz:mt-0_form_wiz form__field" id="whatsapp-field" style="display: none;">
+                                    <label for="whatsapp-phone-number" class="label_form_wiz">
+                                      WhatsApp Number
+                                      <span data-required="true" aria-hidden="true"></span>
+                                    </label>
+                                    <input id="whatsapp-phone-number" type="tel" name="whatsapp-phone-number" autocomplete="tel" inputmode="tel" class="form_wiz_input">
+                                  </div>  
+                        
+                                </div>
+                                <div class="d-flex_form_wiz align-items-center_form_wiz justify-center_form_wiz sm_form_wiz:justify-end_form_wiz mt-4_form_wiz sm_form_wiz:mt-5_form_wiz">
+                                  <button type="button" data-action="next" class="butn_form_wiz">
+                                    Continue
+                                  </button>
+                                </div>
+                              </section>
+                              <!-- / End Step 1 -->
+                          
+                              <!-- Step 2 -->
+                              <section id="progress-form_form_wiz__panel-2" role="tabpanel" aria-labelledby="progress-form_form_wiz__tab-2" tabindex="0" hidden>
+                                <div class="sm_form_wiz:d-grid_form_wiz sm_form_wiz:grid-col-2_form_wiz sm_form_wiz:mt-3_form_wiz">
+                        
+                                <div class="mt-3_form_wiz form__field">
+                                  <label for="address" class="label_form_wiz">
+                                    Address Line 1
+                                    <span data-required="true" aria-hidden="true"></span>
+                                  </label>
+                                  <input id="address" type="text" name="address" autocomplete="shipping address-line1" class="form_wiz_input">
+                                </div>
+                          
+                                <div class="mt-3_form_wiz form__field">
+                                  <label for="address-2" class="label_form_wiz">
+                                    Address Line 2 (optional)
+                                  </label>
+                                  <input id="address-2" type="text" name="address-2" autocomplete="shipping address-line2" class="form_wiz_input">
+                                </div>
+                        
+                              </div>
+                          
+                                <div class="sm_form_wiz:d-grid_form_wiz sm_form_wiz:grid-col-3_form_wiz sm_form_wiz:mt-3_form_wiz">
+                                  <div class="mt-3_form_wiz sm_form_wiz:mt-0_form_wiz form__field">
+                                    <label for="address-city" class="label_form_wiz">
+                                      City
+                                      <span data-required="true" aria-hidden="true"></span>
+                                    </label>
+                                    <input id="address-city" type="text" name="address-city" autocomplete="shipping address-level2" class="form_wiz_input">
+                                  </div>
+                          
+                                  <div class="mt-3_form_wiz sm_form_wiz:mt-0_form_wiz form__field">
+                                    <label for="address-state" class="label_form_wiz">
+                                      State
+                                      <span data-required="true" aria-hidden="true"></span>
+                                    </label>
+                                    <select id="address-state" name="address-state" autocomplete="shipping address-level1" class="select_form_wiz">
+                                        <option value="" disabled selected>Please select</option>
+                                        <option value="AP">Andhra Pradesh</option>
+                                        <option value="AR">Arunachal Pradesh</option>
+                                        <option value="AS">Assam</option>
+                                        <option value="BR">Bihar</option>
+                                        <option value="CT">Chhattisgarh</option>
+                                        <option value="GA">Goa</option>
+                                        <option value="GJ">Gujarat</option>
+                                        <option value="HR">Haryana</option>
+                                        <option value="HP">Himachal Pradesh</option>
+                                        <option value="JK">Jammu and Kashmir</option>
+                                        <option value="JH">Jharkhand</option>
+                                        <option value="KA">Karnataka</option>
+                                        <option value="KL">Kerala</option>
+                                        <option value="MP">Madhya Pradesh</option>
+                                        <option value="MH">Maharashtra</option>
+                                        <option value="MN">Manipur</option>
+                                        <option value="ML">Meghalaya</option>
+                                        <option value="MZ">Mizoram</option>
+                                        <option value="NL">Nagaland</option>
+                                        <option value="OR">Odisha</option>
+                                        <option value="PB">Punjab</option>
+                                        <option value="RJ">Rajasthan</option>
+                                        <option value="SK">Sikkim</option>
+                                        <option value="TN">Tamil Nadu</option>
+                                        <option value="TS">Telangana</option>
+                                        <option value="TR">Tripura</option>
+                                        <option value="UP">Uttar Pradesh</option>
+                                        <option value="UK">Uttarakhand</option>
+                                        <option value="WB">West Bengal</option>
+                                        <option value="AN">Andaman and Nicobar Islands</option>
+                                        <option value="CH">Chandigarh</option>
+                                        <option value="DN">Dadra and Nagar Haveli and Daman and Diu</option>
+                                        <option value="DL">Delhi</option>
+                                        <option value="LD">Lakshadweep</option>
+                                        <option value="PY">Puducherry</option>
+                                      </select>
+                                      
+                                  </div>
+                          
+                                  <div class="mt-3_form_wiz sm_form_wiz:mt-0_form_wiz form__field">
+                                    <label for="address-zip" class="label_form_wiz">
+                                      Postal code
+                                      <span data-required="true" aria-hidden="true"></span>
+                                    </label>
+                                    <input id="address-zip" type="text" name="address-zip" autocomplete="shipping postal-code" inputmode="numeric" class="form_wiz_input">
+                                  </div>
+                                </div>
+                          
+                                <div class="d-flex_form_wiz flex-column-reverse_form_wiz sm_form_wiz:flex-row_form_wiz align-items-center_form_wiz justify-center_form_wiz sm_form_wiz:justify-end_form_wiz mt-4_form_wiz sm_form_wiz:mt-5_form_wiz">
+                                  <button type="button" class="mt-1_form_wiz sm_form_wiz:mt-0_form_wiz button--simple_form_wiz butn_form_wiz back_btn" data-action="prev">
+                                    Back
+                                  </button>
+                                  <button type="button" data-action="next" class="butn_form_wiz">
+                                    Continue
+                                  </button>
+                                </div>
+                              </section>
+                              <!-- / End Step 2 -->
+                          
+                              <!-- Step 3 -->
+                              <section id="progress-form_form_wiz__panel-3" role="tabpanel" aria-labelledby="progress-form_form_wiz__tab-3" tabindex="0" hidden>
+                        
+                                <div class="sm_form_wiz:d-grid_form_wiz sm_form_wiz:grid-col-2_form_wiz sm_form_wiz:mt-3_form_wiz">
+                        
+                                  <div class="mt-3_form_wiz form__field">
+                                    <label for="father_name" class="label_form_wiz">
+                                      Father name
+                                      <span data-required="true" aria-hidden="true"></span>
+                                    </label>
+                                    <input id="father_name" type="text" name="father_name" autocomplete="family-name" class="form_wiz_input">
+                                  </div>
+                        
+                                  <div class="mt-3_form_wiz form__field">
+                                    <label for="mother_name" class="label_form_wiz">
+                                      Mother name
+                                      <span data-required="true" aria-hidden="true"></span>
+                                    </label>
+                                    <input id="mother_name" type="text" name="mother_name" autocomplete="family-name" class="form_wiz_input">
+                                  </div>
+                        
+                                </div>
+                        
+                                <!-- <div class="mt-3_form_wiz form__field">
+                                  <label for="siblings">
+                                    Siblings
+                                    <span data-required="true" aria-hidden="true"></span>
+                                  </label>
+                                  <select class="js-example-basic-multiple" name="siblings" multiple="multiple">
+                                    <option value="younger_brother">Younger Brother</option>
+                                    <option value="elder_brother">Elder Brother</option>
+                                    <option value="younger_sister">Younger Sister</option>
+                                    <option value="elder_sister">Elder Sister</option>
+                                  </select>
+                                </div> -->
+                        
+                                <div class="sm_form_wiz:d-grid_form_wiz sm_form_wiz:grid-col-2_form_wiz sm_form_wiz:mt-3_form_wiz">
+                        
+                                <div class="mt-3_form_wiz sm_form_wiz:mt-0_form_wiz form__field">
+                                    <label for="martial" class="label_form_wiz">
+                                      Martial Status (optional)
+                                    </label>
+                                    <div class="btn-group btn-toggle"> 
+                                      <label class="btn btn-default label_form_wiz" >
+                                        <input type="radio" class="martial form_wiz_input" name="martial" value="single"> Single
+                                      </label>
+                                      <label class="btn btn-default label_form_wiz">
+                                        <input type="radio" class="martial form_wiz_input" name="martial" value="married"> Married
+                                      </label>
+                                      <label class="btn btn-default label_form_wiz">
+                                        <input type="radio" class="martial form_wiz_input" name="martial" value="divorce"> Divorce
+                                      </label>
+                                    </div>
+                                  </div>
+                        
+                                  <div class="mt-3_form_wiz sm_form_wiz:mt-0_form_wiz form__field" id="wife_name" style="display: none;">
+                                    <label for="wifename" class="label_form_wiz">
+                                      Wife name
+                                    </label>
+                                    <input id="wifename" type="text" name="wifename" autocomplete="given-name" class="form_wiz_input">
+                                  </div>  
+                                  
+                                </div>
+                        
+                              
+                                <div class="d-flex_form_wiz flex-column-reverse_form_wiz sm_form_wiz:flex-row_form_wiz align-items-center_form_wiz justify-center_form_wiz sm_form_wiz:justify-end_form_wiz mt-4_form_wiz sm_form_wiz:mt-5_form_wiz">
+                                  <button type="button" class="mt-1_form_wiz sm_form_wiz:mt-0_form_wiz button--simple_form_wiz butn_form_wiz back_btn" data-action="prev">
+                                    Back
+                                  </button>
+                                  <button type="button" data-action="next" class="butn_form_wiz">
+                                    Continue
+                                  </button>
+                                </div>
+                              </section>
+                              <!-- / End Step 3 -->
+                        
+                               <!-- Step 4 -->
+                               <section id="progress-form_form_wiz__panel-4" role="tabpanel" aria-labelledby="progress-form_form_wiz__tab-4" tabindex="0" hidden>
+                                <div class="sm_form_wiz:d-grid_form_wiz sm_form_wiz:grid-col-2_form_wiz sm_form_wiz:mt-3_form_wiz">
+                                  <fieldset id="language" class="mt-3_form_wiz form__field">
+                                    <legend>Language's you know<span data-required="true" aria-hidden="true"></span></legend>
+                                    
+                                    <div class="form__choice-wrapper_form_wiz">
+                                    <label class="form__choice-wrapper_form_wiz label_form_wiz">
+                                      <input type="checkbox" name="language" value="english" class="form_wiz_input">
+                                      <span>English</span>
+                                    </label>
+                                    <label class="form__choice-wrapper_form_wiz label_form_wiz">
+                                      <input type="checkbox" name="language" value="tamil" class="form_wiz_input">
+                                      <span>Tamil</span>
+                                    </label>
+                                    <label class="form__choice-wrapper_form_wiz label_form_wiz">
+                                      <input type="checkbox" name="language" value="hindi" class="form_wiz_input">
+                                      <span>Hindi</span>
+                                    </label>
+                                    <label class="form__choice-wrapper_form_wiz label_form_wiz">
+                                      <input type="checkbox" name="language" value="telugu" class="form_wiz_input">
+                                      <span>Telugu</span>
+                                    </label>
+                                    <label class="form__choice-wrapper_form_wiz label_form_wiz">
+                                      <input type="checkbox" name="language" value="malayalam" class="form_wiz_input">
+                                      <span>Malayalam</span>
+                                    </label>
+                                    <label class="form__choice-wrapper_form_wiz label_form_wiz">
+                                      <input type="checkbox" name="language" value="bengali" class="form_wiz_input">
+                                      <span>Bengali</span>
+                                    </label>
+                                    <label class="form__choice-wrapper_form_wiz label_form_wiz">
+                                      <input type="checkbox" name="language" value="kannada" class="form_wiz_input">
+                                      <span>Kannada</span>
+                                    </label>
+                                    <label class="form__choice-wrapper_form_wiz label_form_wiz">
+                                      <input type="checkbox" name="language" value="urudu" class="form_wiz_input">
+                                      <span>Urudu</span>
+                                    </label>
+                                  </div>
+                                  </fieldset>
+                                  <fieldset id="sports" class="mt-3_form_wiz form__field">
+                                    <legend>Sports you intrested</legend>
+                                    
+                                    <div class="form__choice-wrapper_form_wiz">
+                                    <label class="form__choice-wrapper_form_wiz label_form_wiz">
+                                      <input type="checkbox" name="sports" value="cricket" class="form_wiz_input">
+                                      <span>Cricket</span>
+                                    </label>
+                                    <label class="form__choice-wrapper_form_wiz label_form_wiz">
+                                      <input class="form_wiz_input" type="checkbox" name="sports" value="football">
+                                      <span>Football</span>
+                                    </label>
+                                    <label class="form__choice-wrapper_form_wiz label_form_wiz">
+                                      <input class="form_wiz_input" type="checkbox" name="sports" value="vollyball">
+                                      <span>Vollyball</span>
+                                    </label>
+                                    <label class="form__choice-wrapper_form_wiz label_form_wiz">
+                                      <input class="form_wiz_input" type="checkbox" name="sports" value="basketball">
+                                      <span>Basketball</span>
+                                    </label>
+                                    <label class="form__choice-wrapper_form_wiz label_form_wiz">
+                                      <input class="form_wiz_input" type="checkbox" name="sports" value="chess">
+                                      <span>Chess</span>
+                                    </label>
+                                    <label class="form__choice-wrapper_form_wiz label_form_wiz">
+                                      <input class="form_wiz_input" type="checkbox" name="sports" value="carrom_board">
+                                      <span>Carrom board</span>
+                                    </label>
+                                    <label class="form__choice-wrapper_form_wiz label_form_wiz">
+                                      <input class="form_wiz_input" type="checkbox" name="sports" value="tennis">
+                                      <span>Tennis</span>
+                                    </label>
+                                    <label class="form__choice-wrapper_form_wiz label_form_wiz">
+                                      <input class="form_wiz_input" type="checkbox" name="sports" value="hockey">
+                                      <span>Hockey</span>
+                                    </label>
+                                  </div>
+                                  </fieldset>
+                                </div>
+                                  <div class="mt-3_form_wiz form__field">
+                                    <label for="hobby" class="label_form_wiz">
+                                      Hobby (optional)
+                                    </label>
+                                    <input id="hobby" type="text" name="hobby" autocomplete="family-name" class="form_wiz_input">
+                                  </div>
+                                <div class="d-flex_form_wiz flex-column-reverse_form_wiz sm_form_wiz:flex-row_form_wiz align-items-center_form_wiz justify-center_form_wiz sm_form_wiz:justify-end_form_wiz mt-4_form_wiz sm_form_wiz:mt-5_form_wiz">
+                                  <button type="button" class="mt-1_form_wiz sm_form_wiz:mt-0_form_wiz button--simple_form_wiz butn_form_wiz back_btn" data-action="prev">
+                                    Back
+                                  </button>
+                                  <button type="button" data-action="next" class="butn_form_wiz">
+                                    Continue
+                                  </button>
+                                </div>
+                              </section>
+                              <!-- / End Step 4 -->
+                        
+                               <!-- Step 5 -->
+                               <section id="progress-form_form_wiz__panel-5" role="tabpanel" aria-labelledby="progress-form_form_wiz__tab-5" tabindex="0" hidden>
+                                <div class="sm_form_wiz:d-grid_form_wiz sm_form_wiz:grid-col-2_form_wiz sm_form_wiz:mt-3_form_wiz">
+                                  <div class="mt-3_form_wiz sm_form_wiz:mt-0_form_wiz form__field">
+                                    <label for="current_company" class="label_form_wiz">
+                                      Current company
+                                      <span data-required="true" aria-hidden="true"></span>
+                                    </label>
+                                    <input id="current_company" type="text" name="current_company" class="form_wiz_input">
+                                  </div>
+                                  <div class="mt-3_form_wiz sm_form_wiz:mt-0_form_wiz form__field">
+                                    <label for="current_company_location" class="label_form_wiz">
+                                      Current company loction
+                                      <span data-required="true" aria-hidden="true"></span>
+                                    </label>
+                                    <input id="current_company_location" type="text" name="current_company_location" class="form_wiz_input">
+                                  </div>
+                                </div>
+                                <div class="mt-3_form_wiz form__field">
+                                    <label for="previous_cmpy" class="label_form_wiz">
+                                        Have you worked any previous company ?
+                                      </label>
+                                      <div class="btn-group btn-toggle"> 
+                                        <label class="btn btn-default label_form_wiz">
+                                          <input type="radio" class="previous_cmpy" name="previous_cmpy" value="no" class="form_wiz_input"> No
+                                        </label>
+                                        <label class="btn btn-default label_form_wiz">
+                                          <input type="radio" class="previous_cmpy" name="previous_cmpy" value="yes" class="form_wiz_input"> Yes
+                                        </label>
+                                      </div>
+                                </div>
+                                <div class="sm_form_wiz:d-grid_form_wiz sm_form_wiz:grid-col-2_form_wiz sm_form_wiz:mt-3_form_wiz" id="prev_comp" style="display: none;">
+                                  <div class="mt-3_form_wiz sm_form_wiz:mt-0_form_wiz form__field">
+                                    <label for="previous_company" class="label_form_wiz">
+                                      Previous company
+                                      <span data-required="true" aria-hidden="true"></span>
+                                    </label>
+                                    <input id="previous_company" type="text" name="previous_company" autocomplete="family-name" class="form_wiz_input">
+                                  </div>
+                                  <div class="mt-3_form_wiz sm_form_wiz:mt-0_form_wiz form__field">
+                                    <label for="previous_company_location" class="label_form_wiz">
+                                      Previous company location
+                                      <span data-required="true" aria-hidden="true"></span>
+                                    </label>
+                                    <input id="previous_company_location" type="text" name="previous_company_location" autocomplete="family-name" class="form_wiz_input">
+                                  </div>
+                                </div>
+                                <div class="sm_form_wiz:d-grid_form_wiz sm_form_wiz:grid-col-2_form_wiz sm_form_wiz:mt-3_form_wiz">
+                                  <div class="mt-3_form_wiz sm_form_wiz:mt-0_form_wiz form__field">
+                                    <label for="designation" class="label_form_wiz">
+                                      Designation
+                                      <span data-required="true" aria-hidden="true"></span>
+                                    </label>
+                                    <input id="designation" type="text" name="designation" autocomplete="family-name" class="form_wiz_input">
+                                  </div>
+                                  <div class="mt-3_form_wiz sm_form_wiz:mt-0_form_wiz form__field">
+                                    <label for="experience" class="label_form_wiz">
+                                      years of experience
+                                      <span data-required="true" aria-hidden="true"></span>
+                                    </label>
+                                    <input id="experience" type="text" name="experience" autocomplete="family-name" class="form_wiz_input">
+                                  </div>
+                                </div>
+                                <div class="d-flex_form_wiz flex-column-reverse_form_wiz sm_form_wiz:flex-row_form_wiz align-items-center_form_wiz justify-center_form_wiz sm_form_wiz:justify-end_form_wiz mt-4_form_wiz sm_form_wiz:mt-5_form_wiz">
+                                  <button type="button" class="mt-1_form_wiz sm_form_wiz:mt-0_form_wiz button--simple_form_wiz butn_form_wiz back_btn" data-action="prev">
+                                    Back
+                                  </button>
+                                  <button type="submit" class="butn_form_wiz">
+                                    Submit
+                                  </button>
+                                </div>
+                              </section>
+                              <!-- / End Step 5 -->
+                            </form>
+                            <!-- / End Progress Form -->
+                          
+                    </div>
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /.content -->
+
+{% endblock main_content %}

@@ -1,0 +1,502 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon"  href="{% static 'images/icons/kgisl-icon.ico' %}" />
+    <title>{% block title %} {% endblock title %}</title>
+
+    {% block style %}
+
+    {% endblock style %}
+</head>
+<body class="hold-transition sidebar-mini control-sidebar-slide-open layout-navbar-fixed layout-fixed">
+    {% block content %}
+        
+        
+    {% endblock content %}
+
+  <!-- jQuery -->
+  <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>    
+  <!-- <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script> -->
+	<!-- <script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script> -->
+	<!-- <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script> -->
+	<!-- <script src="{% static 'vendor/select2/select2.min.js' %}"></script> -->
+	<script src="{% static 'vendor/tilt/tilt.jquery.min.js' %}"></script>
+  <!-- <script src="{% static 'js/main.js' %}"></script> -->
+        <!-- REQUIRED SCRIPTS -->
+    
+    
+    <!-- Bootstrap -->
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- AdminLTE -->
+    <script src="{% static 'dist/js/adminlte.js' %}"></script>
+    <!-- OPTIONAL SCRIPTS -->
+    <script src="{% static 'plugins/chart.js/Chart.min.js' %}"></script>
+    <!-- AdminLTE for demo purposes -->]
+    <script src="{% static 'dist/js/demo.js' %}"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="{% static 'dist/js/pages/dashboard3.js' %}"></script>
+    <!-- DataTables  & Plugins -->
+    
+    <script src="{% static 'plugins/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables-responsive/js/responsive.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables-buttons/js/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables-buttons/js/buttons.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'plugins/jszip/jszip.min.js' %}"></script>
+    <script src="{% static 'plugins/pdfmake/pdfmake.min.js' %}"></script>
+    <script src="{% static 'plugins/pdfmake/vfs_fonts.js' %}"></script>
+    <script src="{% static 'plugins/datatables-buttons/js/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables-buttons/js/buttons.print.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables-buttons/js/buttons.colVis.min.js' %}"></script>
+    
+    <script>
+      $(function () {
+        $("#example1").DataTable({
+          "responsive": true,
+          "lengthChange": true, // Enable the "List per page" option
+          "lengthMenu": [5, 10, 15, 20, 25], // Define the available options
+          "autoWidth": false,
+          "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+      });
+      
+    </script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+  
+  <script>
+    $(document).ready(function() {
+      $('.js-example-basic-multiple').select2();
+    });
+    $('.gender').click(function() {
+      $('.gender').parent().removeClass('btn-primary active');
+      $(this).parent().addClass('btn-primary active');
+    });      
+    $('.whatapp_no').click(function() {
+      $('.whatapp_no').parent().removeClass('btn-primary active');
+      $(this).parent().addClass('btn-primary active');
+      var selectedValue = $(this).val();
+      if (selectedValue === 'no') {
+        $('#whatsapp-field').show();
+      } else {
+        $('#whatsapp-field').hide();
+      }
+    });
+    $('.previous_cmpy').click(function(){
+      $('.previous_cmpy').parent().removeClass('btn-primary active');
+      $(this).parent().addClass('btn-primary active');
+      var selectedValue = $(this).val();
+      if (selectedValue === 'yes') {
+        $('#prev_comp').show();
+      } else {
+        $('#prev_comp').hide();
+      }
+    });
+    $('.martial').click(function(){
+      $('.martial').parent().removeClass('btn-primary active');
+      $(this).parent().addClass('btn-primary active');
+      var selectedValue = $(this).val();
+      if (selectedValue === 'married') {
+        $('#wife_name').show();
+      } else {
+        $('#wife_name').hide();
+      }
+    });
+    console.clear();
+function ready(fn) {
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setTimeout(fn, 1);
+    document.removeEventListener('DOMContentLoaded', fn);
+  } else {
+    document.addEventListener('DOMContentLoaded', fn);
+  }
+}
+ready(function() {
+  const progressForm = document.getElementById('progress-form_form_wiz');
+  const tabItems  = progressForm.querySelectorAll('[role="tab"]')
+      , tabPanels = progressForm.querySelectorAll('[role="tabpanel"]');
+  let currentStep = 0;
+  const isValidPhone = val => {
+    const regex = new RegExp(/^[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?$/);
+    return regex.test(val);
+  };
+  const isValidEmail = val => {
+    const regex = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+    return regex.test(val);
+  };
+  const validateText = field => {
+    const val = field.value.trim();
+    if (val === '' && field.required) {
+      return {
+        isValid: false
+      };
+    } else {
+      return {
+        isValid: true
+      };
+    }
+  };
+  const validateSelect = field => {
+    const val = field.value.trim();
+    if (val === '' && field.required) {
+      return {
+        isValid: false,
+        message: 'Please select an option from the dropdown menu.'
+      };
+    } else {
+      return {
+        isValid: true
+      };
+    }
+  };
+  const validateGroup = fieldset => {
+    const choices = fieldset.querySelectorAll('input[type="radio"], input[type="checkbox"]');
+    let isRequired = false
+      , isChecked  = false;
+    for (const choice of choices) {
+      if (choice.required) {
+        isRequired = true;
+      }
+      if (choice.checked) {
+        isChecked = true;
+      }
+    }
+    if (!isChecked && isRequired) {
+      return {
+        isValid: false,
+        message: 'Please make a selection.'
+      };
+    } else {
+      return {
+        isValid: true
+      };
+    }
+  };
+  const validateChoice = field => {
+    return validateGroup(field.closest('fieldset'));
+  };  
+  const validatePhone = field => {
+    const val = field.value.trim();
+    if (val === '' && field.required) {
+      return {
+        isValid: false
+      };
+    } else if (val !== '' && !isValidPhone(val)) {
+      return {
+        isValid: false,
+        message: 'Please provide a valid US phone number.'
+      };
+    } else {
+      return {
+        isValid: true
+      };
+    }
+  };
+  const validateDate = field => {
+    const val = field.value.trim();
+    if (val === '' && field.required) {
+      return {
+        isValid: false
+      };
+    }else {
+      return {
+        isValid: true
+      };
+    }
+  };
+  const validateGender = field => {
+    const val = field.value.trim();
+    if (val === '' && field.required) {
+      return {
+        isValid: false
+      };
+    }else {
+      return {
+        isValid: true
+      };
+    }
+  };
+  const validateEmail = field => {
+    const val = field.value.trim();
+    if (val === '' && field.required) {
+      return {
+        isValid: false
+      };
+    } else if (val !== '' && !isValidEmail(val)) {
+      return {
+        isValid: false,
+        message: 'Please provide a valid email address.'
+      };
+    } else {
+      return {
+        isValid: true
+      };
+    }
+  };
+  const getValidationData = field => {
+    switch (field.type) {
+      case 'text':
+      case 'textarea':
+        return validateText(field);
+      case 'select-one':
+        return validateSelect(field);
+      //case 'select-multiple':
+      //  return true;
+      case 'fieldset':
+        return validateGroup(field);
+      case 'radio':
+          return validateGender(field);
+      case 'checkbox':
+        return validateChoice(field);
+      case 'tel':
+        return validatePhone(field);
+      case 'email':
+        return validateEmail(field);
+      case 'date':
+        return validateDate(field);    
+        throw new Error(`The provided field type '${field.tagName}:${field.type}' is not supported in this form.`);
+    }
+  };
+    const isValid = field => {
+      return getValidationData(field).isValid;
+    };
+  const validateStep = currentStep => {
+    const fields = tabPanels[currentStep].querySelectorAll('fieldset, input:not([type="radio"]):not([type="checkbox"]), select, textarea');
+    const invalidFields = [...fields].filter(field => {
+      return !isValid(field);
+    });
+    return new Promise((resolve, reject) => {
+      if (invalidFields && !invalidFields.length) {
+        resolve();
+      } else {
+        reject(invalidFields);
+      }
+    });
+  };
+  const FIELD_PARENT_CLASS = 'form__field'
+      , FIELD_ERROR_CLASS  = 'form__error-text';
+  function updateChoice(fieldset, status, errorId = '') {
+    const choices = fieldset.querySelectorAll('[type="radio"], [type="checkbox"]');
+    for (const choice of choices) {
+      if (status) {
+        choice.setAttribute('aria-invalid', 'true');
+        choice.setAttribute('aria-describedby', errorId);
+      } else {
+        choice.removeAttribute('aria-invalid');
+        choice.removeAttribute('aria-describedby');
+      }
+    }
+  }
+  function reportError(field, message = 'Please complete this required field.') {
+    const fieldParent = field.closest(`.${FIELD_PARENT_CLASS}`);
+    if (progressForm.contains(fieldParent)) {
+      let fieldError   = fieldParent.querySelector(`.${FIELD_ERROR_CLASS}`)
+        , fieldErrorId = '';
+      if (!fieldParent.contains(fieldError)) {
+        fieldError = document.createElement('p');
+        if (field.matches('fieldset')) {
+          fieldErrorId = `${field.id}__error`;
+          updateChoice(field, true, fieldErrorId);
+        } else if (field.matches('[type="radio"], [type="checkbox"]')) {
+          fieldErrorId = `${field.closest('fieldset').id}__error`;
+          updateChoice(field.closest('fieldset'), true, fieldErrorId);
+        } else {
+          fieldErrorId = `${field.id}__error`;
+          field.setAttribute('aria-invalid', 'true');
+          field.setAttribute('aria-describedby', fieldErrorId);
+        }
+        fieldError.id = fieldErrorId;
+        fieldError.classList.add(FIELD_ERROR_CLASS);
+        fieldParent.appendChild(fieldError);
+      }
+      fieldError.textContent = message;
+    }
+  }
+  function reportSuccess(field) {
+    const fieldParent = field.closest(`.${FIELD_PARENT_CLASS}`);
+    if (progressForm.contains(fieldParent)) {
+      const fieldError = fieldParent.querySelector(`.${FIELD_ERROR_CLASS}`);
+      if (fieldParent.contains(fieldError)) {
+        if (field.matches('fieldset')) {
+          updateChoice(field, false);
+        } else if (field.matches('[type="radio"], [type="checkbox"]')) {
+          updateChoice(field.closest('fieldset'), false);
+        } else {
+          field.removeAttribute('aria-invalid');
+          field.removeAttribute('aria-describedby');
+        }
+        fieldParent.removeChild(fieldError);
+      }
+    }
+  }
+  function reportValidity(field) {
+    const validation = getValidationData(field);
+    if (!validation.isValid && validation.message) {
+      reportError(field, validation.message);
+    } else if (!validation.isValid) {
+      reportError(field);
+    } else {
+      reportSuccess(field);
+    }
+  }
+  function deactivateTabs() {
+    tabItems.forEach(tab => {
+      tab.setAttribute('aria-selected', 'false');
+      tab.setAttribute('tabindex', '-1');
+    });
+    tabPanels.forEach(panel => {
+      panel.setAttribute('hidden', '');
+    });
+  }
+  function activateTab(index) {
+    const thisTab   = tabItems[index]
+        , thisPanel = tabPanels[index];
+    deactivateTabs();
+    thisTab.focus();
+    thisTab.setAttribute('aria-selected', 'true');
+    thisTab.removeAttribute('tabindex');
+    thisPanel.removeAttribute('hidden');
+    currentStep = index;
+  }
+  function clickTab(e) {
+    activateTab([...tabItems].indexOf(e.currentTarget));
+  }
+  function arrowTab(e) {
+    const { keyCode, target } = e;
+    const targetPrev  = target.previousElementSibling
+        , targetNext  = target.nextElementSibling
+        , targetFirst = target.parentElement.firstElementChild
+        , targetLast  = target.parentElement.lastElementChild;
+    const isDisabled = node => node.hasAttribute('aria-disabled');
+    switch (keyCode) {
+      case 37: // Left arrow
+        if (progressForm.contains(targetPrev) && !isDisabled(targetPrev)) {
+          activateTab(currentStep - 1);
+        } else if (!isDisabled(targetLast)) {
+          activateTab(tabItems.length - 1);
+        } break;
+      case 39: // Right arrow
+        if (progressForm.contains(targetNext) && !isDisabled(targetNext)) {
+          activateTab(currentStep + 1);
+        } else if (!isDisabled(targetFirst)) {
+          activateTab(0);
+        } break;
+    }
+  }
+  tabItems[0].addEventListener('click', clickTab);
+  tabItems[0].addEventListener('keydown', arrowTab);
+  function handleProgress(isComplete) {
+    const currentTab = tabItems[currentStep]
+        , nextTab    = tabItems[currentStep + 1];
+    if (isComplete) {
+      currentTab.setAttribute('data-complete', 'true');
+      if (progressForm.contains(nextTab)) {
+        nextTab.removeAttribute('aria-disabled');
+        nextTab.addEventListener('click', clickTab);
+        nextTab.addEventListener('keydown', arrowTab);
+      }
+    } else {
+      currentTab.setAttribute('data-complete', 'false');
+    }
+  }
+  const debounce = (fn, delay = 500) => {
+    let timeoutID;
+    return (...args) => {
+      if (timeoutID) {
+        clearTimeout(timeoutID);
+      }
+      timeoutID = setTimeout(() => {
+        fn.apply(null, args);
+        timeoutID = null;
+      }, delay);
+    };
+  };
+  progressForm.addEventListener('input', debounce(e => {
+    const { target } = e;
+    validateStep(currentStep).then(() => {
+      handleProgress(true);
+    }).catch(() => {
+      handleProgress(false);
+    });
+    reportValidity(target);
+  }));
+  progressForm.addEventListener('click', e => {
+    const { target } = e;
+    if (target.matches('[data-action="next"]')) {
+      validateStep(currentStep).then(() => {
+        handleProgress(true);
+        activateTab(currentStep + 1);
+      }).catch(invalidFields => {
+        handleProgress(false);
+        invalidFields.forEach(field => {
+          reportValidity(field);
+        });
+        invalidFields[0].focus();
+      });
+    }
+    if (target.matches('[data-action="prev"]')) {
+      activateTab(currentStep - 1);
+    }
+  });
+});
+  </script>
+  <script>
+    $(document).ready(function() {
+      $('.delete-btn').click(function() {
+        var id = $(this).data('id');
+        var deleteUrl = "{% url 'info_data:employee_delete' 0 %}".replace('0', id);
+        $('#delete-link').attr('href', deleteUrl);
+      });
+    });
+
+    $('.view-btn').click(function(){
+      var id = $(this).data('id');
+      var viewUrl = "{% url 'info_data:employee_details' 0 %}".replace('0', id);
+      
+      $.ajax({
+        'url': viewUrl ,
+        'dataType': "json",
+        'type': 'GET',
+        'data': {
+          'emp_id':id,
+        },
+
+      }).done(function (data){
+        //alert(data.emp_view_data);
+        console.log(data,'FFFFFFFFFFF');
+        $('#view_modal').modal('show');
+
+      });
+
+    });
+  </script>
+  <script>
+    $(function () {
+      $('.edit-save').prop('disabled', true);
+      $('.edit_edit_save').click(function () {
+        $('html').addClass('active');
+        $('.edit-save').prop('disabled', false);
+      });
+      $('.save_edit_save').click(function () {
+        $('html').removeClass('active');
+        $('.edit-save').prop('disabled', true);
+      });
+    function resizeInput() {
+      $(this).attr('size', $(this).val().length + 2);
+    }
+
+    $('.edit-save')
+      .keyup(resizeInput)
+      .each(resizeInput);
+    });
+  </script>
+</body>
+</html>

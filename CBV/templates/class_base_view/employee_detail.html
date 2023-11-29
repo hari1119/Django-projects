@@ -1,0 +1,15 @@
+{% extends './employee_form.html' %}    
+  
+{% block content %}  
+  
+    <h1>{{ object.first_name }} {{object.last_name}}</h1>  
+  
+    <p>{{ object.email }}</p>  
+    <p>{{ object.mobile }}</p>  
+    <a href="{% url 'EmployeeUpdate' object.id %}">update</a>
+    <a href="{% url 'EmployeeDelete' object.id %}">delete</a>
+    
+
+
+    
+{% endblock content %}  

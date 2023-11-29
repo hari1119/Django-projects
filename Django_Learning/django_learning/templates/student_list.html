@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} <h2>Student List</h2> {% endblock title %}
+
+{% block content %}
+{% for i in stnd_obj %}
+    
+    <h2>{{i.username}}</h2>
+    <a href="{% url 'stdnt_detail' i.id %}">details</a>
+    <a href="{% url 'stdnt_update' i.id %}">update</a>
+    <a href="{% url 'stdnt_delete' i.id %}">delete</a>
+    <hr style="color:yellow">
+
+{% endfor %}
+
+{% endblock content %}

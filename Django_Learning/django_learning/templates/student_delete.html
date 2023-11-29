@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %} <h2>Student Delete</h2> {% endblock title %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <p>Are you sure you want to delete {{ user }}?</p>  
+    <input type="submit" value="Confirm">  
+</form>
+
+{% endblock content %}

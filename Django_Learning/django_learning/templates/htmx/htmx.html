@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/htmx.org@latest/dist/htmx.js"></script>
+</head>
+<body>
+    <button hx-get="{% url 'htmx_form' %}" hx-target="this" hx-swap="outerHTML">
+        Click me to fetch data!
+    </button>
+    <br>
+    <br>
+<!--     
+    <div hx-get="{% url 'htmx_form' %}?param1=value1&amp;param2=value2" hx-trigger="click"  hx-target="#result" hx-swap="beforeend" >
+        <label for="touch">Touch</label>
+    </div> -->
+    
+    <div hx-post="{% url 'htmx_form' %}" 
+            hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' 
+            hx-include="[name='id'], [name='mail']"
+            hx-trigger="click"  
+            hx-target="#result" 
+            hx-swap="beforeend" >
+        <label for="touch">Touch</label>
+        <input type="hidden" value="prabakaran" name="id">
+        <input type="hidden" value="prabakaran@gmail.com" name="mail">
+    </div>
+    
+    <div id="result" class="test">
+        <!-- The fetched data will be updated here -->
+        <h1>Hello world</h1>
+        <input name="q" hx-get="{% url 'htmx_form' %}" hx-trigger="keyup" hx-target="#text" hx-swap="beforeend" hx-confirm="Okay"/>
+        <div id="text"></div>
+        
+    </div>
+</body>
+</html>
